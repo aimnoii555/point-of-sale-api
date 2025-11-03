@@ -20,5 +20,5 @@ const BillSaleModel = connect.define('bills', {
     }
 })
 
-// BillSaleModel.sync({ alter: true })
+BillSaleModel.sync({ alter: true })
 module.exports = BillSaleModel

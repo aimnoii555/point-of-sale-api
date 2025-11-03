@@ -9,6 +9,10 @@ const ProductImageController = require('./controllers/ProductImageController')
 const UserController = require('./controllers/UserController')
 const BillSaleController = require('./controllers/BillSaleController')
 const StockController = require('./controllers/StockController')
+const BankController = require('./controllers/BankController')
+
+const AdminController = require('./controllers/AdminController')
+const ChangePackageController = require('./controllers/ChangePackageController')
 
 
 const app = express()
@@ -29,6 +33,10 @@ app.use(ProductImageController)
 app.use(UserController)
 app.use(BillSaleController)
 app.use(StockController)
+app.use(BankController)
+
+app.use(AdminController)
+app.use(ChangePackageController)
 
 
 app.listen(port, () => {

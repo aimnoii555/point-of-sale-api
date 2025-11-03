@@ -4,7 +4,7 @@ const BillSaleModel = require('../models/BillSaleModel');
 const BillSaleDetailModel = require('../models/BillSaleDetailModel');
 const ProdcutModel = require('../models/ProductModel');
 const ProductImageModel = require('../models/ProductImageModel');
-const { Op, Sequelize } = require('sequelize');
+const { Op } = require('sequelize');
 const app = express();
 
 

@@ -18,5 +18,5 @@ const StockModel = connect.define('stock', {
     }
 })
 
-// StockModel.sync({ alter: true })
+StockModel.sync({ alter: true })
 module.exports = StockModel

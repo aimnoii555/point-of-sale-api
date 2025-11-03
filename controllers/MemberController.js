@@ -4,16 +4,21 @@ const app = express()
 const jwt = require('jsonwebtoken');
 const { getToken, isLogin, getMemberId } = require('./Service');
 const PackageModel = require('../models/PackageModel');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const { comparePassword } = require('../utils/Auth');
 
 app.post('/member/signin', async (req, res) => {
 
     const { phone, password } = req.body;
 
     try {
-        const member = await MemberModel.findOne({ where: { phone, password } });
 
-        if (!member) {
+        const member = await MemberModel.findOne({ where: { phone } });
+        const compare = await comparePassword(password, member.password)
+
+        console.log('compare ' + compare)
+        
+        if (!compare) {
             return res.status(401).send({
                 status: false,
                 message: 'Phone Number or password is invalid.'
@@ -66,6 +71,25 @@ app.put('/member/update-profile', isLogin, async (req, res) => {
         res.send({ status: true, message: 'Updated Success' })
     } catch (error) {
         res.status(500).send({ status: false, error: error.message })
+    }
+})
+
+app.get('/member/list', isLogin, async (req, res) => {
+    try {
+        MemberModel.belongsTo(PackageModel, {
+            foreignKey: 'package_id'
+        })
+        const data = await MemberModel.findAll({
+            order: [['id', 'desc']],
+            attributes: ['id', 'name', 'phone', 'createdAt', 'updatedAt'],
+            include: {
+                model: PackageModel
+            }
+        })
+        res.send({ status: true, data })
+    } catch (error) {
+        res.status(500).send({ status: false, error: error.message })
+
     }
 })
 

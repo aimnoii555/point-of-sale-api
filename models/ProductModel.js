@@ -29,5 +29,5 @@ const ProdcutModel = sequelize.define('products', {
 })
 
 
-// ProdcutModel.sync({ alter: true })
+ProdcutModel.sync({ alter: true })
 module.exports = ProdcutModel;

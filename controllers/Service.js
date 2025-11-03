@@ -33,5 +33,10 @@ module.exports = {
         const token = req.headers.authorization.replace('Bearer ', '');
         const payload = jwt.decode(token.trim())
         return payload.id;
+    },
+    async getAdminId(req) {
+        const token = req.headers.authorization.replace('Bearer ', '');
+        const payload = jwt.decode(token.trim())
+        return payload.id;
     }
 }

@@ -24,5 +24,5 @@ const UserModel = connect.define('users', {
     }
 })
 
-// UserModel.sync({ alter: true })
+UserModel.sync({ alter: true })
 module.exports = UserModel
