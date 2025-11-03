@@ -18,6 +18,6 @@ const ProductImageModel = connect.define('product_image', {
     }
 })
 
-ProductImageModel.sync({ alter: true });
+// ProductImageModel.sync({ alter: true });
 
 module.exports = ProductImageModel;
