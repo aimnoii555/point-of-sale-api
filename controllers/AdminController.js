@@ -3,8 +3,7 @@ const AdminModel = require('../models/AdminModel')
 const app = express()
 const jwt = require('jsonwebtoken')
 const { getAdminId, isLogin } = require('../controllers/Service')
-const MemberModel = require('../models/MemberModel')
-const PackageModel = require('../models/PackageModel')
+
 
 
 app.post('/admin/signin', async (req, res) => {
